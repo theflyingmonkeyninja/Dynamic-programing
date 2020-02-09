@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 """
-Created on Sat Feb  8 22:31:08 2020
+Created on Sat march  8 22:31:08 2019
 
-@author: dhana
+@author: dhananjay
 """
 
 def fact(n):
@@ -18,7 +18,18 @@ def fib(n):
         return fib(n-1)+fib(n-2)
     
     
-# def factdynp    
+def factdynp(n):
+    memo ={};
+    if n in memo:
+        return memo[n]
+    elif n == 0:
+        return 1
+    else:
+        x = n*factdynp(n-1);
+        memo[n] = x ;
+        
+    return x
+   
 
 # def fib
        
@@ -26,4 +37,14 @@ def fib(n):
     
 
     
-    
+from timeit import default_timer as timer
+from datetime import timedelta
+start = timer()
+factdynp(100)
+end = timer()
+print(timedelta(seconds=end-start))
+
+start = timer()
+fact(100)
+end = timer()
+print(timedelta(seconds=end-start))
